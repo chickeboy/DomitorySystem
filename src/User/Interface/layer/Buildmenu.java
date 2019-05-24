@@ -11,7 +11,6 @@ public class Buildmenu {
 
 	public void buildMenu() {
 		AdminMenu adminMenu = new AdminMenu();
-		ShowBuildMenu showBuildMenu = new ShowBuildMenu();
 		while (true) {
 			System.out.println("=========宿舍楼管理界面===========");
 			System.out.println("1.添加宿舍楼");
@@ -31,7 +30,7 @@ public class Buildmenu {
 				updata();
 				break;
 			case 4:
-				showBuildMenu.show();
+				show();
 				break;
 			case 5:
 				adminMenu.admingMenu();

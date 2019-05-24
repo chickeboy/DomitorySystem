@@ -59,7 +59,6 @@ public class DormitoryBuild extends IOutil {
 	public ArrayList<DormitoryBuilding> show() {
 		return arrayList = read();
 	}
-
 	public ArrayList<DormitoryBuilding> findById(int id) {
 		ArrayList<DormitoryBuilding> arrayList = read();
 		ArrayList<DormitoryBuilding> arrayList2 = new ArrayList<DormitoryBuilding>();
@@ -79,5 +78,15 @@ public class DormitoryBuild extends IOutil {
 			}
 		}
 		return arrayList2;
+	}
+	public DormitoryBuilding  ById(int buildId) {
+		arrayList = read();
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==buildId) {
+				return arrayList.get(i);
+			}
+		}
+		return null;
+		
 	}
 }

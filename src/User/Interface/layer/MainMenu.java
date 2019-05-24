@@ -17,7 +17,7 @@ public class MainMenu {
 			adminMenu.admingMenu();
 			break;
 		case 2:
-			//学生界面
+			studentMenu.studentMenu();
 			break;
 		case 3:
 			return;

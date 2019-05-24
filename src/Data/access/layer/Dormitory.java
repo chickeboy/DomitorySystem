@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import Dormitory.Class.DormitoryDormitory;
 import Dormitory.Util.IOutil;
+import Dormitory.Util.ShowUtil;
 
 public class Dormitory extends IOutil {
-  ArrayList<DormitoryDormitory> arrayList;
+	ShowUtil showUtil = new ShowUtil();
+	ArrayList<DormitoryDormitory> arrayList;
 	public Dormitory(File file) {
 		super(file);
 		// TODO Auto-generated constructor stub
@@ -64,5 +66,24 @@ public class Dormitory extends IOutil {
 			}
 		}
 		return arrayList2;
+	}
+	public ArrayList<DormitoryDormitory> findByBuildId(int buildId) {
+		arrayList = read();
+		ArrayList<DormitoryDormitory> arrayList2 = new ArrayList<DormitoryDormitory>();
+		for (int i = 0; i < arrayList.size(); i++) {
+		if (arrayList.get(i).getBuildid()==buildId) {
+			arrayList2.add(arrayList.get(i));
+		}	
+		}
+		return arrayList2;
+	}
+	public DormitoryDormitory findById(int dormitory) {
+		arrayList = read();
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==dormitory) {
+				return arrayList.get(i);
+			}
+		}
+		return null;
 	}
 }

@@ -29,7 +29,7 @@ public class BedMenu {
 				updata();
 				break;
 			case 4:
-				//≤Èø¥¥≤∆Ã
+				show();
 				break;
 			case 5:
 				adminMenu.admingMenu();
@@ -125,7 +125,7 @@ public class BedMenu {
 		System.out.println("«Î ‰»Î«ﬁ “∫≈");
 		int dormitory = scanner.nextInt();
 		if (!bed.showBydormitory(dormitory)) {
-			
+			bed.showBydormitory(dormitory);
 		}
 	}
 }

@@ -81,4 +81,22 @@ public class BedBusiness extends IOutil {
 		}
 		return arrayList2;
 	}
+	public DormitoryBed findByStuId(int stuId) {
+		arrayList = read();
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getStuID()==stuId) {
+				return arrayList.get(i);
+			}
+		}
+		return null;
+	}
+	public DormitoryBed ById(int bedid) {
+		arrayList =read();
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==bedid) {
+				return arrayList.get(i);
+			}
+		}
+		return null;
+	}
 }

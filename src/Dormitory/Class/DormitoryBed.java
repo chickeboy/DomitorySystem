@@ -1,6 +1,9 @@
 package Dormitory.Class;
+
+import java.io.Serializable;
+
 //¥≤∆Ã£®Àﬁ…·ID°¢¥≤∫≈°¢StuID£©
-public class DormitoryBed {
+public class DormitoryBed implements Serializable {
 	private int id;
 	private int dormitory;
 	private int StuID;

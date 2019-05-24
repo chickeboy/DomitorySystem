@@ -20,7 +20,6 @@ public class DormitoryDormitory implements Serializable {
 		this.id = id;
 		this.buildid = buildid;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
