@@ -3,6 +3,7 @@ package Data.access.layer;
 import java.io.File;
 import java.util.ArrayList;
 
+import Dormitory.Class.DormitoryBed;
 import Dormitory.Class.DormitoryDormitory;
 import Dormitory.Util.IOutil;
 import Dormitory.Util.ShowUtil;
@@ -85,5 +86,23 @@ public class Dormitory extends IOutil {
 			}
 		}
 		return null;
+	}
+	public int getbed(DormitoryBed dormitoryBed) {
+		arrayList = read();
+		int a = 0;
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==dormitoryBed.getDormitory()) {
+				a = arrayList.get(i).getCapacity();
+			}
+		}
+		return a;
+	}
+	public void cahngeCapacity(DormitoryBed dormitoryBed,int a) {
+		arrayList = read();
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==dormitoryBed.getDormitory()) {
+				arrayList.get(i).setCapacity(a-1);
+			}
+		}
 	}
 }

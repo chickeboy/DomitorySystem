@@ -50,4 +50,13 @@ public class StudentMain extends IOutil {
 		}
 		return null;
 	}
+	public void changePassword(int stuid,String password) {
+		arrayList = read();
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==stuid) {
+				arrayList.get(i).setPassword(password);
+			}
+		}
+		write(arrayList);
+	}
 }

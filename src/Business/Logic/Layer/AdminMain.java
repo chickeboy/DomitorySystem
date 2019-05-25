@@ -4,16 +4,24 @@ import Data.access.layer.BedBusiness;
 import Data.access.layer.Dormitory;
 import Data.access.layer.DormitoryBuild;
 import Data.access.layer.DormitoryData;
+import Data.access.layer.InputData;
+import Data.access.layer.OutputData;
+import Data.access.layer.SchoolCardData;
 import Data.access.layer.StudentMain;
 import Dormitory.Class.DormitoryAll;
 import Dormitory.Class.DormitoryBed;
+import Dormitory.Class.InPutOutPut;
+import Dormitory.Class.SchoolCard;
 //学生入住和学生迁出学生换寝室
 public class AdminMain {
+	SchoolCardData schoolCardData = new SchoolCardData();
 	StudentMain studentMain = new StudentMain();
 	DormitoryBuild dormitoryBuild = new DormitoryBuild();
 	Dormitory dormitory = new Dormitory();
 	BedBusiness bedBusiness = new BedBusiness();
 	DormitoryData data = new DormitoryData();
+	InputData inputData = new InputData();
+	OutputData outputData = new OutputData();
 	public boolean inputStudent(int stuId) {
 		if (studentMain.findById(stuId)!=null) {
 			return true;
@@ -50,7 +58,11 @@ public class AdminMain {
 		data.add(dormitoryAll);
 	}
 	public boolean output(int stuId) {
-		if (data.remove(stuId)) {
+		DormitoryAll dormitoryAll = data.remove(stuId);
+		if (dormitoryAll!=null) {
+			int  a = studentMain.findById(stuId).getSchoolcard();
+			SchoolCard schoolCard = schoolCardData.findByid(a);
+			schoolCardData.addMoney(schoolCard, schoolCard.getBalance()+100);
 			return true;
 		}else {
 			return false;
@@ -83,5 +95,25 @@ public class AdminMain {
 		}else {
 			return false;
 		}
+	}
+	public boolean deposit(int stuid) {
+		SchoolCard schoolCard = schoolCardData.findByStuid(stuid);
+		int money = schoolCardData.showMoney(schoolCard);
+		if (money-100>0) {
+			schoolCardData.deductions(schoolCard, 100);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public void inputrecord(int stuid,int buildId,int dormitory,int bedId) {
+		DormitoryBed dormitoryBed = bedBusiness.ById(bedId);
+		DormitoryAll dormitoryAll = new DormitoryAll(dormitoryBed,this.dormitory.findById(dormitory),dormitoryBuild.ById(buildId));
+		InPutOutPut inPutOutPut = new InPutOutPut(inputData.getlastId()+1,studentMain.findById(stuid).getName(), dormitoryAll);
+		inputData.add(inPutOutPut);
+	}
+	public void outputrecord(int stuid) {
+		InPutOutPut inPutOutPut = new InPutOutPut(outputData.getlastId()+1,studentMain.findById(stuid).getName(), data.remove(stuid));
+		outputData.add(inPutOutPut);
 	}
 }

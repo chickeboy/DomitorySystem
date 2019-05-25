@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Data.access.layer.BedBusiness;
 import Data.access.layer.Dormitory;
 import Data.access.layer.DormitoryBuild;
+import Data.access.layer.DormitoryData;
 import Dormitory.Class.DormitoryAll;
 import Dormitory.Class.DormitoryBed;
 import Dormitory.Class.DormitoryBuilding;
@@ -20,7 +21,7 @@ public class DormitoryAllMain {
 	ArrayList<DormitoryDormitory> arrayListdormitory = new ArrayList<DormitoryDormitory>();
 	ArrayList<DormitoryBuilding> arrayListbuild = new ArrayList<DormitoryBuilding>();
 	ArrayList<DormitoryAll> arrayListAll = new ArrayList<DormitoryAll>();
-
+	DormitoryData data =new DormitoryData();
 	public int findByBuild(int buildid) {
 		int a = 1;// 输出正常情况下
 		arrayListbuild = dormitoryBuild.findById(buildid);
@@ -75,10 +76,8 @@ public class DormitoryAllMain {
 		}
 		return arrayListAll;
 	}
-	public void findByStuId(int StuId) {
-		DormitoryBed dormitoryBed = bedBusiness.findByStuId(StuId);
-		if (dormitoryBed!=null) {
+	public DormitoryAll findByStuId(int stuId) {
+		return data.findByStuId(stuId);
 			
-		}
 	}
 }

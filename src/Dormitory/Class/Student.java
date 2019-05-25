@@ -11,11 +11,11 @@ public class Student implements Serializable {
 	private String password;
 	private String phonenumber;
 	private String marjoer;
-	private String schoolcard;
+	private int schoolcard;
 	
 	
 	public Student(int id, String name, String sex, String password, String phonenumber, String marjoer,
-			String schoolcard) {
+			int schoolcard) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -127,12 +127,17 @@ public class Student implements Serializable {
 	public void setMarjoer(String marjoer) {
 		this.marjoer = marjoer;
 	}
-	public String getSchoolcard() {
+	
+	public int getSchoolcard() {
 		return schoolcard;
 	}
-	public void setSchoolcard(String schoolcard) {
+
+
+	public void setSchoolcard(int schoolcard) {
 		this.schoolcard = schoolcard;
 	}
+
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", sex=" + sex + ", password=" + password + ", phonenumber="

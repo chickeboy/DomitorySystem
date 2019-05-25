@@ -87,10 +87,10 @@ public class StudentMenu {
 			addSchoolcard();
 			break;
 		case 2:
-
+			consumption();
 			break;
 		case 3:
-
+			repair();
 			break;
 		case 4:
 			rechargeable();
@@ -99,7 +99,7 @@ public class StudentMenu {
 			findRechargeable();
 			break;
 		case 6:
-
+			
 			break;
 		case 7:
 			mainMenu.mainMenu();
@@ -131,6 +131,7 @@ public class StudentMenu {
 			System.out.println("该卡不存在");
 		}
 	}
+
 	public void findRechargeable() {
 		System.out.println("请输入你的stuid");
 		int stuid = scanner.nextInt();
@@ -139,10 +140,163 @@ public class StudentMenu {
 		if (schoolCardMain.rechargeable(stuid, payid)) {
 			schoolCardMain.showAll(stuid);
 		}
-		
-		
+
 	}
+
 	public void consumption() {
 		System.out.println("======消费界面========");
+		System.out.println("1.洗衣服");
+		System.out.println("2.打水");
+		System.out.println("3.洗澡");
+		System.out.println("4.网费");
+		System.out.println("5.返回");
+		int a = scanner.nextInt();
+		switch (a) {
+		case 1:
+			clothes();
+			break;
+		case 2:
+			water();
+			break;
+		case 3:
+			shower();
+			break;
+		case 4:
+			internetfee();
+			break;
+		case 5:
+			studentMainMenu();
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	public void clothes() {
+		System.out.println("请输入你的stuid");
+		int stuid = scanner.nextInt();
+		System.out.println("请输入你的payid");
+		String payid = scanner.next();
+		if (schoolCardMain.rechargeable(stuid, payid)) {
+			if (studentOperation.consumption(stuid, 5)) {
+				System.out.println("消费成功");
+			} else {
+				System.out.println("余额不足");
+			}
+		} else {
+			System.out.println("输入错误");
+		}
+
+	}
+
+	public void water() {
+		System.out.println("请输入你的stuid");
+		int stuid = scanner.nextInt();
+		System.out.println("请输入你的payid");
+		String payid = scanner.next();
+		if (schoolCardMain.rechargeable(stuid, payid)) {
+			if (studentOperation.consumption(stuid, 1)) {
+				System.out.println("消费成功");
+			} else {
+				System.out.println("余额不足");
+			}
+		} else {
+			System.out.println("输入错误");
+		}
+	}
+
+	public void shower() {
+		System.out.println("请输入你的stuid");
+		int stuid = scanner.nextInt();
+		System.out.println("请输入你的payid");
+		String payid = scanner.next();
+		if (schoolCardMain.rechargeable(stuid, payid)) {
+			if (studentOperation.consumption(stuid, 5)) {
+				System.out.println("消费成功");
+			} else {
+				System.out.println("余额不足");
+			}
+		} else {
+			System.out.println("输入错误");
+		}
+	}
+
+	public void internetfee() {
+		System.out.println("请输入你的stuid");
+		int stuid = scanner.nextInt();
+		System.out.println("请输入你的payid");
+		String payid = scanner.next();
+		if (schoolCardMain.rechargeable(stuid, payid)) {
+			if (studentOperation.consumption(stuid, 50)) {
+				System.out.println("消费成功");
+			} else {
+				System.out.println("余额不足");
+			}
+		} else {
+			System.out.println("输入错误");
+		}
+	}
+
+	public void repair() {
+		System.out.println("你的学生id");
+		int stuid = scanner.nextInt();
+		System.out.println("报修的寝室");
+		int dormitory = scanner.nextInt();
+		System.out.println("报修的内容");
+		String content = scanner.next();
+		studentOperation.repair(stuid, dormitory, content);
+	}
+
+	public void change() {
+		System.out.println("=======密码修改界面==========");
+		System.out.println("1.修改密码");
+		System.out.println("2.修改支付密码");
+		System.out.println("3.退出");
+		int a = scanner.nextInt();
+		switch (a) {
+		case 1:
+			changePasword();
+			break;
+		case 2:
+			chagePayid();
+			break;
+		case 3:
+			studentMainMenu();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public void changePasword() {
+		System.out.println("输入你的stuid");
+		int stuid = scanner.nextInt();
+		System.out.println("输入你的name");
+		String name =scanner.next();
+		System.out.println("输入你的password");
+		String password = scanner.next();
+		if (studentOperation.longin(stuid, name, password)) {
+			System.out.println("新的password:");
+			String newpassword = scanner.next();
+			studentOperation.changePassword(stuid, newpassword);
+		}else {
+			System.out.println("学生不存在");
+		}
+	}
+	public void chagePayid() {
+		System.out.println("请输入你的SchoolCardId");
+		int schoolId = scanner.nextInt();
+		System.out.println("请输入你的stuid");
+		int stuid = scanner.nextInt();
+		System.out.println("请输入你的payid");
+		String payid = scanner.next();
+		if (schoolCardMain.rechargeable(stuid, payid)) {
+			System.out.println("请输入newpayid");
+			String newPayId =scanner.next();
+			schoolCardMain.changePayId(schoolId, stuid, newPayId);
+		}
 	}
 }

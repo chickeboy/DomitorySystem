@@ -1,4 +1,4 @@
-package SchoolCard;
+package Data.access.layer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class SchoolCardData  extends IOutil{
 		if (arrayList.size()==0) {
 			id = -1;
 		}else {
-			id = arrayList.get(arrayList.size()).getId();
+			id = arrayList.get(arrayList.size()-1).getId();
 		}
 		arrayList.add(new SchoolCard(id, stuId, payId));
 		write(arrayList);
@@ -56,5 +56,50 @@ public class SchoolCardData  extends IOutil{
 			}
 		}
 		return schoolCard;
+	}
+	public SchoolCard findByStuid(int stuid) {
+		arrayList = read();
+		SchoolCard schoolCard = null;
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getStuid()==stuid) {
+				schoolCard = arrayList.get(i);
+			}
+		}
+		return schoolCard;
+	}
+	public int showMoney(SchoolCard schoolCard) {
+		arrayList = read();
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).equals(schoolCard)) {
+				return arrayList.get(i).getBalance();
+			}
+		}
+		return 0;
+	}
+	public void deductions(SchoolCard schoolCard,int money) {
+		arrayList = read();
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).equals(schoolCard)) {
+				arrayList.get(i).setBalance(arrayList.get(i).getBalance()-money);
+			}
+		}
+		write(arrayList);
+	}
+	public void cahngePayId(int school,int stuid,String newPayId) {
+		arrayList = read();
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==school&&arrayList.get(i).getStuid()==stuid) {
+				arrayList.get(i).setPayid(newPayId);
+			}
+		}
+	}
+	public SchoolCard findByid(int schoolCardId) {
+		arrayList = read();
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==schoolCardId) {
+				return arrayList.get(i);
+			}
+		}
+		return null;
 	}
 }

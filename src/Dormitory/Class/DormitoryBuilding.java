@@ -3,7 +3,7 @@ package Dormitory.Class;
 import java.io.Serializable;
 
 //宿舍楼（区分男、女）（ID、地址）
-public class DormitoryBuilding implements Serializable{
+public class DormitoryBuilding implements Serializable,Comparable<DormitoryBuilding>{
 	private String type;
 	private int id;
 	public DormitoryBuilding(String type, int id) {
@@ -52,6 +52,12 @@ public class DormitoryBuilding implements Serializable{
 	@Override
 	public String toString() {
 		return id+"号楼"+"类型"+type+"宿舍";
+	}
+
+	@Override
+	public int compareTo(DormitoryBuilding o) {
+		// TODO Auto-generated method stub
+		return id=o.getId();
 	}
 	
 }

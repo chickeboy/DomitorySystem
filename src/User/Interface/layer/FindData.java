@@ -10,8 +10,6 @@ public class FindData {
 	DormitoryAllMain dormitoryAllMain = new DormitoryAllMain();
 	StudentOperation studentOperation = new StudentOperation();
 	public void findData() {
-		while (true) {
-			
 			AdminMenu adminMenu = new AdminMenu();
 			System.out.println("==========信息查询界面===========");
 			System.out.println("1.查看所有学员信息");
@@ -35,7 +33,7 @@ public class FindData {
 				occupancy();
 				break;
 			case 5:
-				
+				findByStuId();
 				break;
 			case 6:
 				adminMenu.admingMenu();
@@ -44,7 +42,6 @@ public class FindData {
 			default:
 				break;
 			}
-		}
 	}
 
 	public void findAllStudent() {
@@ -58,9 +55,11 @@ public class FindData {
 		switch (a) {
 		case 2:
 			System.out.println("这栋类没有寝室");
+			findData();
 			break;
 		case 3:
 			System.out.println("没有这栋楼");
+			findData();
 			break;
 		default:
 			break;
@@ -70,17 +69,19 @@ public class FindData {
 		System.out.println("请输入要查找的寝室id");
 		int dormitory = scanner.nextInt();
 		dormitoryAllMain.show(dormitoryAllMain.findByDormitory(dormitory), dormitory);
+		findData();
 	}
 	public void occupancy() {
 		System.out.println("请输入寝室楼id");
 		int buildid = scanner.nextInt();
 		System.out.println("请输入寝室id");
 		int dormitory = scanner.nextInt();
-		dormitoryAllMain.occupancy(buildid, dormitory);
+		System.out.println("入住率"+dormitoryAllMain.occupancy(buildid, dormitory));
+		findData();
 	}
 	public void findByStuId() {
 		System.out.println("输入要查找的学生id");
 		int stuId = scanner.nextInt();
-		
+		System.out.println(dormitoryAllMain.findByStuId(stuId));
 	}
 }

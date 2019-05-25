@@ -2,6 +2,7 @@ package Data.access.layer;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Dormitory.Class.DormitoryBuilding;
 import Dormitory.Util.IOutil;
@@ -34,6 +35,7 @@ public class DormitoryBuild extends IOutil {
 	public void save(DormitoryBuilding building) {
 		arrayList = read();
 		arrayList.add(building);
+		Collections.sort(arrayList);
 		write(arrayList);
 	}
 
@@ -71,6 +73,7 @@ public class DormitoryBuild extends IOutil {
 	}
 
 	public ArrayList<DormitoryBuilding> findByType(String type) {
+		arrayList = read();
 		ArrayList<DormitoryBuilding> arrayList2 = new ArrayList<DormitoryBuilding>();
 		for (int i = 0; i < arrayList.size(); i++) {
 			if (arrayList.get(i).getType().equals(type)) {

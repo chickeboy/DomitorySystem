@@ -3,12 +3,12 @@ package Business.Logic.Layer;
 import java.util.ArrayList;
 
 import Data.access.layer.RechargeableData;
+import Data.access.layer.SchoolCardData;
 import Data.access.layer.StudentMain;
 import Dormitory.Class.Rechargeable;
 import Dormitory.Class.SchoolCard;
 import Dormitory.Util.ShowUtil;
 import Dormitory.Util.TimeUtil;
-import SchoolCard.SchoolCardData;
 
 public class SchoolCardMain {
 	ShowUtil showUtil = new ShowUtil();
@@ -48,5 +48,8 @@ public class SchoolCardMain {
 			}
 		}
 		showUtil.show(arrayList, stuId+"号学生的充值记录");
+	}
+	public void changePayId(int school,int stuid,String newPayId) {
+		schoolCardData.cahngePayId(school, stuid, newPayId);
 	}
 }

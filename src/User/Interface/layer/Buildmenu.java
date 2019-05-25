@@ -11,7 +11,6 @@ public class Buildmenu {
 
 	public void buildMenu() {
 		AdminMenu adminMenu = new AdminMenu();
-		while (true) {
 			System.out.println("=========宿舍楼管理界面===========");
 			System.out.println("1.添加宿舍楼");
 			System.out.println("2.删除宿舍楼");
@@ -39,8 +38,6 @@ public class Buildmenu {
 				break;
 			}
 		}
-	}
-
 	public void addBuild() {
 		while (true) {
 			System.out.println("请输入要添加的寝室楼id");
@@ -59,6 +56,7 @@ public class Buildmenu {
 				break;
 			}
 		}
+		buildMenu();
 	}
 
 	public void removeBuild() {
@@ -91,7 +89,6 @@ public class Buildmenu {
 
 	public void show() {
 		while (true) {
-			
 			System.out.println("======查询寝室楼信息界面========");
 			System.out.println("1.根据id查询");
 			System.out.println("2.根据类型查询");
@@ -112,11 +109,6 @@ public class Buildmenu {
 				buildMenu();
 				break;
 			default:
-				break;
-			}
-			System.out.println("y/n");
-			String string  = scanner.next();
-			if (string.equals("n")) {
 				break;
 			}
 		}

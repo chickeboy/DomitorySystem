@@ -36,15 +36,16 @@ public class DormitoryData extends IOutil {
 		write(arrayList);
 	}
 
-	public boolean remove(int stuId) {
+	public DormitoryAll  remove(int stuId) {
 		arrayList = read();
+		DormitoryAll dormitoryAll = null;
 		for (int i = 0; i < arrayList.size(); i++) {
 			if (arrayList.get(i).getDormitoryBed().getStuID() == stuId) {
+				dormitoryAll = arrayList.get(i);
 				arrayList.remove(i);
-				return true;
 			}
 		}
-		return false;
+		return dormitoryAll;	
 	}
 
 	public DormitoryAll findByStuId(int stuId) {

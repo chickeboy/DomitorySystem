@@ -29,25 +29,25 @@ public class AdminMenu {
 		int a = scanner.nextInt();
 		switch (a) {
 		case 1:
-			buildmenu.buildMenu();
+			buildmenu.buildMenu();//操作寝室楼
 			break;
 		case 2:
-			dormitoryMenu.dormitoryMenu();
+			dormitoryMenu.dormitoryMenu();//操作宿舍房间
 			break;
 		case 3:
-			bedMenu.bedMenu();
+			bedMenu.bedMenu();//.操作床铺
 			break;
 		case 4:
-			findData.findData();
+			findData.findData();//信息查询
 			break;
 		case 5:
-			inputStudent();
+			inputStudent();//学生入住
 			break;
 		case 6:
-			outStudent();
+			outStudent();//学生迁出
 			break;
 		case 7:
-			// 寝室调换
+			changeDormitory();//调换寝室
 			break;
 		case 8:
 			mainMenu.mainMenu();
@@ -71,7 +71,14 @@ public class AdminMenu {
 					System.out.println("要入住的床铺");
 					int bedId = scanner.nextInt();
 					if (adminMain.inputByBed(bedId)) {
-						adminMain.input(stuId, buildId, dormitory, bedId);
+						if (adminMain.deposit(stuId)) {
+							adminMain.input(stuId, buildId, dormitory, bedId);
+							System.out.println("入住成功");
+							
+							admingMenu();
+						}else {
+							System.out.println("卡上余额不足");
+						}
 					} else {
 						System.out.println("入住失败");
 					}
@@ -91,6 +98,7 @@ public class AdminMenu {
 		System.out.println("请输入要操作的StuId");
 		int stuId = scanner.nextInt();
 		if (adminMain.output(stuId)) {
+			adminMain.outputrecord(stuId);
 			System.out.println("迁出成功");
 		} else {
 			System.out.println("迁出失败");

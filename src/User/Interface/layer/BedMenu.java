@@ -10,7 +10,6 @@ public class BedMenu {
 	Scanner scanner = new Scanner(System.in);
 	public void bedMenu() {
 		AdminMenu adminMenu = new AdminMenu();
-		while (true) {	
 			System.out.println("=======床铺管理界面============");
 			System.out.println("1.添加床铺");
 			System.out.println("2.删除床铺");
@@ -38,11 +37,9 @@ public class BedMenu {
 			default:
 				break;
 			}
-		}
 	}
 	public void add() {
 		while (true) {
-			
 			System.out.println("宿舍id");
 			int dormitory = scanner.nextInt();
 			System.out.println("床号");
@@ -59,6 +56,7 @@ public class BedMenu {
 				break;
 			}
 		}
+		bedMenu();
 	}
 	public void remove() {
 		System.out.println("要删除床铺所属宿舍id");
@@ -68,8 +66,10 @@ public class BedMenu {
 		DormitoryBed dormitoryBed = new DormitoryBed(id, dormitory);
 		if (bed.remove(dormitoryBed)) {
 			System.out.println("删除成功");
+			bedMenu();
 		}else {
 			System.out.println("删除失败");
+			bedMenu();
 		}
 		
 	}
@@ -85,12 +85,13 @@ public class BedMenu {
 		DormitoryBed dormitoryBed =new DormitoryBed(newid, newdormitory);
 		if (bed.updata(dormitoryBed, id, dormitory)) {
 			System.out.println("修改成功");
+			bedMenu();
 		}else {
 			System.out.println("修改失败");
+			bedMenu();
 		}	
 	}
 	public void show() {
-		while(true) {
 			System.out.println("============床铺查询界面===========");
 			System.out.println("1.根据寝室查询");
 			System.out.println("2.根据床号查询");
@@ -112,7 +113,6 @@ public class BedMenu {
 			default:
 				break;
 			}
-		}
 	}
 	public void showByid() {
 		System.out.println("请输入床号");
@@ -120,6 +120,7 @@ public class BedMenu {
 		if (!bed.showByid(id)) {
 			System.out.println("没有数据");
 		}
+		show();
 	}
 	public void showBydormitory() {
 		System.out.println("请输入寝室号");
@@ -127,5 +128,6 @@ public class BedMenu {
 		if (!bed.showBydormitory(dormitory)) {
 			bed.showBydormitory(dormitory);
 		}
+		show();
 	}
 }

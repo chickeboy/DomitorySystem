@@ -86,8 +86,7 @@ public class DormitoryAll implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "DormitoryAll [dormitoryBed=" + dormitoryBed + ", dormitoryDormitory=" + dormitoryDormitory
-				+ ", dormitoryBuilding=" + dormitoryBuilding + "]";
+		return dormitoryBuilding +" "+dormitoryDormitory+ " "+dormitoryBed ;
 	}
 	
 }	
