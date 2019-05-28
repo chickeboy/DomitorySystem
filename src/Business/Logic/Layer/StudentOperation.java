@@ -1,4 +1,10 @@
 package Business.Logic.Layer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import Data.access.layer.RepairData;
 import Data.access.layer.SchoolCardData;
 import Data.access.layer.StudentMain;
@@ -49,5 +55,32 @@ public class StudentOperation {
 	}
 	public void changePassword(int stuid,String password) {
 		studentMain.changePassword(stuid, password);
+	}
+	public String findques(int stuid) {
+		HashMap<String, String> hashMap = studentMain.findPassWord(stuid);
+		ArrayList<String> arrayListqes = new ArrayList<String>();
+		Set<Entry<String,String>> entrySet = hashMap.entrySet();
+		for (Iterator<Entry<String, String>> iterator = entrySet.iterator(); iterator.hasNext();) {
+			Entry<String, String> entry = (Entry<String, String>) iterator.next();
+			arrayListqes.add(entry.getKey());
+		}
+		return arrayListqes.get((int)Math.floor(Math.random()*3));
+	}
+	public boolean findans(int stuid,String string) {
+		HashMap<String, String> hashMap = studentMain.findPassWord(stuid);
+		ArrayList<String> arrayListans = new ArrayList<String>();
+		Set<Entry<String,String>> entrySet = hashMap.entrySet();
+		for (Iterator<Entry<String, String>> iterator = entrySet.iterator(); iterator.hasNext();) {
+			Entry<String, String> entry = (Entry<String, String>) iterator.next();
+			if (entry.getValue().equals(string)) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		return false;
+	}
+	public String getPassword(int stuid) {
+		return studentMain.findById(stuid).getPassword();
 	}
 }

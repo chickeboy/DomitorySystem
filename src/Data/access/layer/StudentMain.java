@@ -2,6 +2,7 @@ package Data.access.layer;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Dormitory.Class.Student;
 import Dormitory.Util.IOutil;
@@ -58,5 +59,15 @@ public class StudentMain extends IOutil {
 			}
 		}
 		write(arrayList);
+	}
+	public HashMap<String, String> findPassWord(int stuid) {
+		arrayList =  read();
+		HashMap<String, String> hashMap = null;
+		for (int i = 0; i <arrayList.size(); i++) {
+			if (arrayList.get(i).getId()==stuid) {
+				hashMap = arrayList.get(i).getHashMap();
+			}
+		}
+		return hashMap;
 	}
 }

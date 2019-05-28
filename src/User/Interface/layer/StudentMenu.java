@@ -1,5 +1,6 @@
 package User.Interface.layer;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import Business.Logic.Layer.SchoolCardMain;
@@ -15,11 +16,11 @@ public class StudentMenu {
 	SchoolCardMain schoolCardMain = new SchoolCardMain();
 
 	public void studentMenu() {
-		while (true) {
 			System.out.println("=============学生登陆注册界面================");
 			System.out.println("1.登陆");
 			System.out.println("2.注册");
-			System.out.println("3.返回上一级");
+			System.out.println("3.忘记密码");
+			System.out.println("4.返回上一级");
 			int a = scanner.nextInt();
 			switch (a) {
 			case 1:
@@ -29,12 +30,14 @@ public class StudentMenu {
 				registered();
 				break;
 			case 3:
+				
+				break;
+			case 4:
 				mainMenu.mainMenu();
 				break;
 			default:
 				break;
 			}
-		}
 	}
 
 	public void registered() {
@@ -48,12 +51,29 @@ public class StudentMenu {
 		String phonenumber = scanner.next();
 		System.out.println("marjore");
 		String marj = scanner.next();
-		Student student = new Student(name, sex, password, phonenumber, marj);
+		System.out.println("ques1");
+		String str = scanner.next();
+		System.out.println("ans1");
+		String str2 = scanner.next();
+		HashMap<String, String> hashMap = new HashMap<String, String>();
+		hashMap.put(str, str2);
+		System.out.println("ques2");
+		str = scanner.next();
+		System.out.println("ans2");
+		str2 = scanner.next();
+		hashMap.put(str, str2);
+		System.out.println("ques3");
+		str = scanner.next();
+		System.out.println("ans3");
+		str2 = scanner.next();
+		hashMap.put(str, str2);
+		Student student = new Student(name, sex, password, phonenumber, marj,hashMap);
 		if (studentOperation.add(student)) {
 			System.out.println("注册成功");
 			studentMainMenu();
 		} else {
 			System.out.println("注册失败");
+			studentMenu();
 		}
 	}
 
@@ -69,9 +89,31 @@ public class StudentMenu {
 			studentMainMenu();
 		} else {
 			System.out.println("登陆失败");
+			studentMenu();
 		}
 	}
-
+	public void forgotpassword() {
+		System.out.println("通过密保找回密码");
+		System.out.println("stuid");
+		int stuid = scanner.nextInt();
+		System.out.println(studentOperation.findques(stuid));
+		String string = scanner.next();
+		if (studentOperation.findans(stuid, string)) {
+			System.out.println("验证成功");
+			studentOperation.getPassword(stuid);
+			System.out.println("是否去修改密码 y/n");
+			string = scanner.next();
+			if (string.equals("y")) {
+				changePasword();
+			}else {
+				studentMenu();
+			}
+		}else {
+			System.out.println("验证失败");
+			studentMenu();
+		}
+		
+	}
 	public void studentMainMenu() {
 		System.out.println("=========学生操作界面=======");
 		System.out.println("1.注册校园卡");
@@ -115,7 +157,14 @@ public class StudentMenu {
 		int stuId = scanner.nextInt();
 		System.out.println("请输入支付密码：");
 		String payid = scanner.next();
-		schoolCardMain.addSchoolCard(stuId, payid);
+		if (schoolCardMain.addSchoolCard(stuId, payid)) {
+			System.out.println("注册成功");
+			studentMainMenu();
+		}else {
+			System.out.println("注册失败");
+			studentMainMenu();
+		}
+		
 	}
 
 	public void rechargeable() {
@@ -124,11 +173,19 @@ public class StudentMenu {
 		System.out.println("请输入你的payid");
 		String payid = scanner.next();
 		if (schoolCardMain.rechargeable(stuid, payid)) {
-			System.out.println("要充多少钱");
-			int money = scanner.nextInt();
-			schoolCardMain.rechargeable(stuid, payid, money);
+			int a = (int) Math.floor(Math.random()*1000+1000);
+			System.out.println("验证码"+a);
+			int b = scanner.nextInt();
+			if (b == a) {
+				
+				System.out.println("要充多少钱");
+				int money = scanner.nextInt();
+				schoolCardMain.rechargeable(stuid, payid, money);
+			}
+			studentMainMenu();
 		} else {
 			System.out.println("该卡不存在");
+			studentMainMenu();
 		}
 	}
 
@@ -182,11 +239,14 @@ public class StudentMenu {
 		if (schoolCardMain.rechargeable(stuid, payid)) {
 			if (studentOperation.consumption(stuid, 5)) {
 				System.out.println("消费成功");
+				consumption();
 			} else {
 				System.out.println("余额不足");
+				consumption();
 			}
 		} else {
 			System.out.println("输入错误");
+			consumption();
 		}
 
 	}
@@ -199,11 +259,14 @@ public class StudentMenu {
 		if (schoolCardMain.rechargeable(stuid, payid)) {
 			if (studentOperation.consumption(stuid, 1)) {
 				System.out.println("消费成功");
+				consumption();
 			} else {
 				System.out.println("余额不足");
+				consumption();
 			}
 		} else {
 			System.out.println("输入错误");
+			consumption();
 		}
 	}
 
@@ -215,11 +278,14 @@ public class StudentMenu {
 		if (schoolCardMain.rechargeable(stuid, payid)) {
 			if (studentOperation.consumption(stuid, 5)) {
 				System.out.println("消费成功");
+				consumption();
 			} else {
 				System.out.println("余额不足");
+				consumption();
 			}
 		} else {
 			System.out.println("输入错误");
+			consumption();
 		}
 	}
 
@@ -231,11 +297,14 @@ public class StudentMenu {
 		if (schoolCardMain.rechargeable(stuid, payid)) {
 			if (studentOperation.consumption(stuid, 50)) {
 				System.out.println("消费成功");
+				consumption();
 			} else {
 				System.out.println("余额不足");
+				consumption();
 			}
 		} else {
 			System.out.println("输入错误");
+			consumption();
 		}
 	}
 
@@ -247,6 +316,7 @@ public class StudentMenu {
 		System.out.println("报修的内容");
 		String content = scanner.next();
 		studentOperation.repair(stuid, dormitory, content);
+		studentMainMenu();
 	}
 
 	public void change() {

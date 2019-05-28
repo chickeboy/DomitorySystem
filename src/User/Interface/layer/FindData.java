@@ -2,6 +2,7 @@ package User.Interface.layer;
 
 import java.util.Scanner;
 
+import Business.Logic.Layer.AdminMain;
 import Business.Logic.Layer.DormitoryAllMain;
 import Business.Logic.Layer.StudentOperation;
 
@@ -9,6 +10,7 @@ public class FindData {
 	Scanner scanner = new Scanner(System.in);
 	DormitoryAllMain dormitoryAllMain = new DormitoryAllMain();
 	StudentOperation studentOperation = new StudentOperation();
+	AdminMain adminMain = new AdminMain();
 	public void findData() {
 			AdminMenu adminMenu = new AdminMenu();
 			System.out.println("==========信息查询界面===========");
@@ -17,7 +19,8 @@ public class FindData {
 			System.out.println("3.查看指定宿舍的学员信息");
 			System.out.println("4.查看入住率（指定宿舍楼、指定宿舍）");
 			System.out.println("5.查看指定学号的学员所在的宿舍");
-			System.out.println("6.返回");
+			System.out.println("6.查看报修记录");
+			System.out.println("7.返回");
 			int a = scanner.nextInt();
 			switch (a) {
 			case 1:
@@ -36,9 +39,11 @@ public class FindData {
 				findByStuId();
 				break;
 			case 6:
+				adminMain.records();
+				break;
+			case 7:
 				adminMenu.admingMenu();
 				break;
-				
 			default:
 				break;
 			}

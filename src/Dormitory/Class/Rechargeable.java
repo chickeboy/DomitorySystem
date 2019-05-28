@@ -1,6 +1,8 @@
 package Dormitory.Class;
 
-public class Rechargeable {
+import java.io.Serializable;
+
+public class Rechargeable implements Serializable{
 	private int id;
 	private int stuId;
 	private int money;

@@ -1,8 +1,10 @@
 package Dormitory.Class;
 //学生/宿舍管理员（ID、姓名、性别、登录密码、手机号、专业、校园卡账号）
+
 //（ID、姓名、登录密码）
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Student implements Serializable {
 	private int id;
@@ -12,21 +14,8 @@ public class Student implements Serializable {
 	private String phonenumber;
 	private String marjoer;
 	private int schoolcard;
-	
-	
-	public Student(int id, String name, String sex, String password, String phonenumber, String marjoer,
-			int schoolcard) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.sex = sex;
-		this.password = password;
-		this.phonenumber = phonenumber;
-		this.marjoer = marjoer;
-		this.schoolcard = schoolcard;
-	}
-	
-	
+	private HashMap<String, String> hashMap;
+
 	public Student(int id, String name, String sex, String password, String phonenumber, String marjoer) {
 		super();
 		this.id = id;
@@ -36,7 +25,31 @@ public class Student implements Serializable {
 		this.phonenumber = phonenumber;
 		this.marjoer = marjoer;
 	}
-	
+
+	public Student(String name, String sex, String password, String phonenumber, String marjoer,
+			HashMap<String, String> hashMap) {
+		super();
+		this.name = name;
+		this.sex = sex;
+		this.password = password;
+		this.phonenumber = phonenumber;
+		this.marjoer = marjoer;
+		this.hashMap = hashMap;
+	}
+
+	public Student(int id, String name, String sex, String password, String phonenumber, String marjoer, int schoolcard,
+			HashMap<String, String> hashMap) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.password = password;
+		this.phonenumber = phonenumber;
+		this.marjoer = marjoer;
+		this.schoolcard = schoolcard;
+		this.hashMap = hashMap;
+	}
+
 	public Student(String name, String sex, String password, String phonenumber, String marjoer) {
 		super();
 		this.name = name;
@@ -46,14 +59,12 @@ public class Student implements Serializable {
 		this.marjoer = marjoer;
 	}
 
-
 	public Student(int id, String name, String password) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -64,7 +75,6 @@ public class Student implements Serializable {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -90,58 +100,74 @@ public class Student implements Serializable {
 		return true;
 	}
 
-
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getSex() {
 		return sex;
 	}
+
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getPhonenumber() {
 		return phonenumber;
 	}
+
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
+
 	public String getMarjoer() {
 		return marjoer;
 	}
+
 	public void setMarjoer(String marjoer) {
 		this.marjoer = marjoer;
 	}
-	
+
 	public int getSchoolcard() {
 		return schoolcard;
 	}
-
 
 	public void setSchoolcard(int schoolcard) {
 		this.schoolcard = schoolcard;
 	}
 
+	public HashMap<String, String> getHashMap() {
+		return hashMap;
+	}
+
+	public void setHashMap(HashMap<String, String> hashMap) {
+		this.hashMap = hashMap;
+	}
 
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", sex=" + sex + ", password=" + password + ", phonenumber="
 				+ phonenumber + ", marjoer=" + marjoer + ", Schoolcard=" + schoolcard + "]";
 	}
-	
+
 }

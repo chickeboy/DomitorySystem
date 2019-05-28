@@ -40,4 +40,7 @@ public class RepairData extends IOutil {
 		arrayList.add(repair);
 		write(arrayList);
 	}
+	public ArrayList<Repair> showAll() {
+		return arrayList  = read();
+	}
 }

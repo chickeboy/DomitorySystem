@@ -6,12 +6,14 @@ import Data.access.layer.DormitoryBuild;
 import Data.access.layer.DormitoryData;
 import Data.access.layer.InputData;
 import Data.access.layer.OutputData;
+import Data.access.layer.RepairData;
 import Data.access.layer.SchoolCardData;
 import Data.access.layer.StudentMain;
 import Dormitory.Class.DormitoryAll;
 import Dormitory.Class.DormitoryBed;
 import Dormitory.Class.InPutOutPut;
 import Dormitory.Class.SchoolCard;
+import Dormitory.Util.ShowUtil;
 //学生入住和学生迁出学生换寝室
 public class AdminMain {
 	SchoolCardData schoolCardData = new SchoolCardData();
@@ -22,6 +24,8 @@ public class AdminMain {
 	DormitoryData data = new DormitoryData();
 	InputData inputData = new InputData();
 	OutputData outputData = new OutputData();
+	ShowUtil showUtil = new ShowUtil();
+	RepairData repairData = new RepairData();
 	public boolean inputStudent(int stuId) {
 		if (studentMain.findById(stuId)!=null) {
 			return true;
@@ -87,7 +91,7 @@ public class AdminMain {
 		DormitoryAll dormitoryAll2 = data.findByDormitory(dormitory2);
 		if (dormitoryAll!=null&&dormitoryAll2!=null) {
 			if (dormitoryAll.getDormitoryBuilding().getType().equals(dormitoryAll2.getDormitoryBuilding().getType())) {
-				data.change(dormitoryAll, dormitoryAll2);
+				data.changeAll(dormitoryAll, dormitoryAll2);
 				return true;
 			}else {
 				return false;
@@ -115,5 +119,8 @@ public class AdminMain {
 	public void outputrecord(int stuid) {
 		InPutOutPut inPutOutPut = new InPutOutPut(outputData.getlastId()+1,studentMain.findById(stuid).getName(), data.remove(stuid));
 		outputData.add(inPutOutPut);
+	}
+	public void records() {
+		showUtil.show(repairData.showAll(), "报修记录");
 	}
 }

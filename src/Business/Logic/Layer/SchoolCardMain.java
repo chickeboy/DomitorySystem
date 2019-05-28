@@ -52,4 +52,7 @@ public class SchoolCardMain {
 	public void changePayId(int school,int stuid,String newPayId) {
 		schoolCardData.cahngePayId(school, stuid, newPayId);
 	}
+	public void showAll() {
+		showUtil.show(schoolCardData.showALL(), "Ð£Ô°¿¨");
+	}
 }

@@ -1,6 +1,8 @@
 package Dormitory.Class;
 
-public class SchoolCard {
+import java.io.Serializable;
+
+public class SchoolCard implements Serializable{
 	private int id;
 	private int stuid;
 	private String payid;

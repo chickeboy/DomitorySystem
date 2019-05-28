@@ -21,8 +21,8 @@ public class SchoolCardData  extends IOutil{
 		arrayList = read();
 		SchoolCard schoolCard2 = null;
 		for (int i = 0; i < arrayList.size(); i++) {
-			if (arrayList.contains(schoolCard)) {
-				 schoolCard = arrayList.get(i);
+			if (arrayList.get(i).equals(schoolCard)) {
+				schoolCard2 = arrayList.get(i);
 			}
 		}
 		return schoolCard2;
@@ -35,7 +35,7 @@ public class SchoolCardData  extends IOutil{
 		}else {
 			id = arrayList.get(arrayList.size()-1).getId();
 		}
-		arrayList.add(new SchoolCard(id, stuId, payId));
+		arrayList.add(new SchoolCard(id+1, stuId, payId));
 		write(arrayList);
 	}
 	public void addMoney(SchoolCard schoolCard,int money) {
@@ -101,5 +101,9 @@ public class SchoolCardData  extends IOutil{
 			}
 		}
 		return null;
+	}
+	public ArrayList<SchoolCard> showALL() {
+		return arrayList = read();
+		
 	}
 }
