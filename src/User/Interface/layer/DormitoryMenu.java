@@ -64,9 +64,9 @@ public class DormitoryMenu {
 				}
 			}else {
 				System.out.println("ÇŞÊÒÂ¥²»´æÔÚ");
-				dormitoryMenu();
 			}
 		}
+		dormitoryMenu();
 	}
 
 	public void remove() {

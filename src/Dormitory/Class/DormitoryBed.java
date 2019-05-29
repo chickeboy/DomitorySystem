@@ -44,7 +44,6 @@ public class DormitoryBed implements Serializable {
 			return false;
 		return true;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -63,9 +62,10 @@ public class DormitoryBed implements Serializable {
 	public void setStuID(int stuID) {
 		StuID = stuID;
 	}
+
 	@Override
 	public String toString() {
-		return "«ﬁ “∫≈£∫"+dormitory+"¥≤∫≈"+id+"—ß…˙—ß∫≈"+StuID;
+		return "DormitoryBed [id=" + id + ", dormitory=" + dormitory + ", StuID=" + StuID + "]";
 	}
 	
 }

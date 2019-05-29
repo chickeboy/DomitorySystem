@@ -6,6 +6,7 @@ public class DormitoryAll implements Serializable {
 	private DormitoryBed dormitoryBed;
 	private DormitoryDormitory dormitoryDormitory;
 	private DormitoryBuilding dormitoryBuilding;
+
 	public DormitoryAll(DormitoryBed dormitoryBed, DormitoryDormitory dormitoryDormitory,
 			DormitoryBuilding dormitoryBuilding) {
 		super();
@@ -13,18 +14,19 @@ public class DormitoryAll implements Serializable {
 		this.dormitoryDormitory = dormitoryDormitory;
 		this.dormitoryBuilding = dormitoryBuilding;
 	}
-	
+
 	public DormitoryAll(DormitoryBed dormitoryBed, DormitoryDormitory dormitoryDormitory) {
 		super();
 		this.dormitoryBed = dormitoryBed;
 		this.dormitoryDormitory = dormitoryDormitory;
 	}
+
 	public DormitoryAll(DormitoryDormitory dormitoryDormitory, DormitoryBuilding dormitoryBuilding) {
 		super();
 		this.dormitoryDormitory = dormitoryDormitory;
 		this.dormitoryBuilding = dormitoryBuilding;
 	}
-	
+
 	public DormitoryAll() {
 		super();
 	}
@@ -69,24 +71,31 @@ public class DormitoryAll implements Serializable {
 	public DormitoryBed getDormitoryBed() {
 		return dormitoryBed;
 	}
+
 	public void setDormitoryBed(DormitoryBed dormitoryBed) {
 		this.dormitoryBed = dormitoryBed;
 	}
+
 	public DormitoryDormitory getDormitoryDormitory() {
 		return dormitoryDormitory;
 	}
+
 	public void setDormitoryDormitory(DormitoryDormitory dormitoryDormitory) {
 		this.dormitoryDormitory = dormitoryDormitory;
 	}
+
 	public DormitoryBuilding getDormitoryBuilding() {
 		return dormitoryBuilding;
 	}
+
 	public void setDormitoryBuilding(DormitoryBuilding dormitoryBuilding) {
 		this.dormitoryBuilding = dormitoryBuilding;
 	}
+
 	@Override
 	public String toString() {
-		return dormitoryBuilding +" "+dormitoryDormitory+ " "+dormitoryBed ;
+		return "«ﬁ “¬•∫≈:" + dormitoryBuilding.getId() + "\t" + "Àﬁ…·¬•¿‡–Õ:" + dormitoryBuilding.getType() + "\t" + "Àﬁ…·∫≈:"
+				+ dormitoryDormitory.getId() + "\t" + "¥≤∆Ã∫≈:" + dormitoryBed.getId() + "\t" + "—ß…˙—ß∫≈:" + dormitoryBed.getStuID();
 	}
-	
-}	
+
+}

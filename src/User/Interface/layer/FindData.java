@@ -20,7 +20,9 @@ public class FindData {
 			System.out.println("4.查看入住率（指定宿舍楼、指定宿舍）");
 			System.out.println("5.查看指定学号的学员所在的宿舍");
 			System.out.println("6.查看报修记录");
-			System.out.println("7.返回");
+			System.out.println("7.查看入住记录");
+			System.out.println("8.查看迁出记录");
+			System.out.println("9.返回");
 			int a = scanner.nextInt();
 			switch (a) {
 			case 1:
@@ -40,8 +42,17 @@ public class FindData {
 				break;
 			case 6:
 				adminMain.records();
+				findData();
 				break;
-			case 7:
+			case 7://入住记录
+				adminMain.inputdata();
+				findData();
+				break;
+			case 8://迁出记录
+				adminMain.outputdata();
+				findData();
+				break;
+			case 9:
 				adminMenu.admingMenu();
 				break;
 			default:
@@ -51,6 +62,7 @@ public class FindData {
 
 	public void findAllStudent() {
 		studentOperation.showAll();
+		findData();
 	}
 
 	public void findByBuild() {
@@ -59,7 +71,7 @@ public class FindData {
 		int a = dormitoryAllMain.findByBuild(buildid);
 		switch (a) {
 		case 2:
-			System.out.println("这栋类没有寝室");
+			System.out.println("这栋楼没有寝室");
 			findData();
 			break;
 		case 3:
@@ -69,6 +81,7 @@ public class FindData {
 		default:
 			break;
 		}
+		findData();
 	}
 	public void findByDormitory() {
 		System.out.println("请输入要查找的寝室id");
@@ -88,5 +101,6 @@ public class FindData {
 		System.out.println("输入要查找的学生id");
 		int stuId = scanner.nextInt();
 		System.out.println(dormitoryAllMain.findByStuId(stuId));
+		findData();
 	}
 }

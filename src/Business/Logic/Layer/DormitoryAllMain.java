@@ -35,7 +35,7 @@ public class DormitoryAllMain {
 					}
 				}
 			} else {
-				a = 2;// 这栋类没有寝室
+				a = 2;// 这栋楼没有寝室
 			}
 		} else {
 			return 3;// 没有这栋楼

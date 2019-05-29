@@ -109,4 +109,13 @@ public class DormitoryData extends IOutil {
 		}
 		write(arrayList);
 	}
+	public boolean Stuid(int stuid) {
+		arrayList = read();
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).getDormitoryBed().getStuID()==stuid) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

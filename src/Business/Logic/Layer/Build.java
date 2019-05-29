@@ -14,7 +14,6 @@ public class Build {
 			return false;
 		} else {
 			dormitoryBuild.save(dormitoryBuilding);
-			
 			return true;
 		}
 

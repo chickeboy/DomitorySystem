@@ -44,7 +44,7 @@ public class BedMenu {
 			int dormitory = scanner.nextInt();
 			System.out.println("´²ºÅ");
 			int id = scanner.nextInt();
-			DormitoryBed dormitoryBed = new DormitoryBed(id, dormitory);
+			DormitoryBed dormitoryBed = new DormitoryBed(id, dormitory,-1);
 			if (bed.add(dormitoryBed)) {
 				System.out.println("Ìí¼Ó³É¹¦");
 			}else {
@@ -99,10 +99,10 @@ public class BedMenu {
 			int a  = scanner.nextInt();
 			switch (a) {
 			case 1:
-				showByid();
+				showBydormitory();
 				break;
 			case 2:
-				showBydormitory();
+				showByid();
 				break;
 
 			case 3:

@@ -71,7 +71,9 @@ public class DormitoryDormitory implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ËŞÉáÂ¥ºÅ£º" + buildid + "ËŞÉáºÅ£º" + id + "ÇŞÊÒ×î´óÈËÊı£º" + capacity;
+		return "DormitoryDormitory [id=" + id + ", buildid=" + buildid + ", capacity=" + capacity + "]";
 	}
+
+	
 
 }

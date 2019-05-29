@@ -29,4 +29,17 @@ public class InputData extends IOutil{
 			return arrayList.get(arrayList.size()-1).getId();
 		}
 	}
+	
+	public ArrayList<InPutOutPut> showAll() {
+		return	arrayList = read();
+	}
+	public InPutOutPut findById(int stuid) {
+		arrayList = read();
+		for (int i = 0; i < arrayList.size(); i++) {
+			if (arrayList.get(i).getDormitoryAll().getDormitoryBed().getStuID()==stuid) {
+				return arrayList.get(i);
+			}
+		}
+		return null;
+	}
 }

@@ -30,7 +30,7 @@ public class StudentMenu {
 				registered();
 				break;
 			case 3:
-				
+				forgotpassword();
 				break;
 			case 4:
 				mainMenu.mainMenu();
@@ -68,8 +68,10 @@ public class StudentMenu {
 		str2 = scanner.next();
 		hashMap.put(str, str2);
 		Student student = new Student(name, sex, password, phonenumber, marj,hashMap);
-		if (studentOperation.add(student)) {
+		int stuid = studentOperation.add(student);
+		if (stuid!=-1) {
 			System.out.println("注册成功");
+			System.out.println("你获得的学号是："+stuid);
 			studentMainMenu();
 		} else {
 			System.out.println("注册失败");
@@ -100,7 +102,7 @@ public class StudentMenu {
 		String string = scanner.next();
 		if (studentOperation.findans(stuid, string)) {
 			System.out.println("验证成功");
-			studentOperation.getPassword(stuid);
+			System.out.println("你的密码为："+studentOperation.getPassword(stuid));
 			System.out.println("是否去修改密码 y/n");
 			string = scanner.next();
 			if (string.equals("y")) {
@@ -141,7 +143,7 @@ public class StudentMenu {
 			findRechargeable();
 			break;
 		case 6:
-			
+			change();
 			break;
 		case 7:
 			mainMenu.mainMenu();
@@ -155,16 +157,20 @@ public class StudentMenu {
 	public void addSchoolcard() {
 		System.out.println("stuid");
 		int stuId = scanner.nextInt();
-		System.out.println("请输入支付密码：");
-		String payid = scanner.next();
-		if (schoolCardMain.addSchoolCard(stuId, payid)) {
-			System.out.println("注册成功");
-			studentMainMenu();
+		if (schoolCardMain.findcard(stuId)) {
+			System.out.println("请输入支付密码：");
+			String payid = scanner.next();
+			if (schoolCardMain.addSchoolCard(stuId, payid)) {
+				System.out.println("注册成功");
+				studentMainMenu();
+			}else {
+				System.out.println("注册失败");
+				studentMainMenu();
+			}
 		}else {
-			System.out.println("注册失败");
-			studentMainMenu();
+			System.out.println("该学生已经注册过校园卡");
 		}
-		
+		studentMainMenu();
 	}
 
 	public void rechargeable() {
@@ -197,7 +203,7 @@ public class StudentMenu {
 		if (schoolCardMain.rechargeable(stuid, payid)) {
 			schoolCardMain.showAll(stuid);
 		}
-
+		studentMainMenu();
 	}
 
 	public void consumption() {
@@ -237,8 +243,10 @@ public class StudentMenu {
 		System.out.println("请输入你的payid");
 		String payid = scanner.next();
 		if (schoolCardMain.rechargeable(stuid, payid)) {
-			if (studentOperation.consumption(stuid, 5)) {
+			int a = studentOperation.consumption(stuid, 5);
+			if (a!=-1) {
 				System.out.println("消费成功");
+				System.out.println("你的余额："+a);
 				consumption();
 			} else {
 				System.out.println("余额不足");
@@ -257,8 +265,10 @@ public class StudentMenu {
 		System.out.println("请输入你的payid");
 		String payid = scanner.next();
 		if (schoolCardMain.rechargeable(stuid, payid)) {
-			if (studentOperation.consumption(stuid, 1)) {
+			int a = studentOperation.consumption(stuid, 1);
+			if (a!=-1) {
 				System.out.println("消费成功");
+				System.out.println("你的余额："+a);
 				consumption();
 			} else {
 				System.out.println("余额不足");
@@ -276,8 +286,10 @@ public class StudentMenu {
 		System.out.println("请输入你的payid");
 		String payid = scanner.next();
 		if (schoolCardMain.rechargeable(stuid, payid)) {
-			if (studentOperation.consumption(stuid, 5)) {
+			int a = studentOperation.consumption(stuid, 5);
+			if (a!=-1) {
 				System.out.println("消费成功");
+				System.out.println("你的余额："+a);
 				consumption();
 			} else {
 				System.out.println("余额不足");
@@ -295,8 +307,10 @@ public class StudentMenu {
 		System.out.println("请输入你的payid");
 		String payid = scanner.next();
 		if (schoolCardMain.rechargeable(stuid, payid)) {
-			if (studentOperation.consumption(stuid, 50)) {
+			int a = studentOperation.consumption(stuid, 50);
+			if (a!=-1) {
 				System.out.println("消费成功");
+				System.out.println("你的余额："+a);
 				consumption();
 			} else {
 				System.out.println("余额不足");
@@ -352,8 +366,10 @@ public class StudentMenu {
 			System.out.println("新的password:");
 			String newpassword = scanner.next();
 			studentOperation.changePassword(stuid, newpassword);
+			studentMainMenu();
 		}else {
 			System.out.println("学生不存在");
+			studentMainMenu();
 		}
 	}
 	public void chagePayid() {

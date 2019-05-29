@@ -18,7 +18,6 @@ public class Bed {
 			return false;
 		}else {
 			bedBusiness.add(dormitoryBed);
-			
 			return true;
 		}
 	}

@@ -27,16 +27,17 @@ public class SchoolCardData  extends IOutil{
 		}
 		return schoolCard2;
 	}
-	public void addSchoolCard(int stuId,String payId) {
+	public int addSchoolCard(int stuId,String payId) {
 		int id = 0;
 		arrayList = read();
 		if (arrayList.size()==0) {
 			id = -1;
 		}else {
-			id = arrayList.get(arrayList.size()-1).getId();
+			id = arrayList.size();
 		}
-		arrayList.add(new SchoolCard(id+1, stuId, payId));
+		arrayList.add(new SchoolCard(id, stuId, payId));
 		write(arrayList);
+		return id;
 	}
 	public void addMoney(SchoolCard schoolCard,int money) {
 		arrayList  = read();

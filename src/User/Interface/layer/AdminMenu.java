@@ -57,7 +57,6 @@ public class AdminMenu {
 		}
 
 	}
-
 	public void inputStudent() {
 		System.out.println("请输入要操作的StuId");
 		int stuId = scanner.nextInt();
@@ -71,10 +70,9 @@ public class AdminMenu {
 					System.out.println("要入住的床铺");
 					int bedId = scanner.nextInt();
 					if (adminMain.inputByBed(bedId)) {
-						if (adminMain.deposit(stuId)) {
+						if (adminMain.deposit(stuId)!=-1) {
 							adminMain.input(stuId, buildId, dormitory, bedId);
 							System.out.println("入住成功");
-							
 							admingMenu();
 						}else {
 							System.out.println("卡上余额不足");
@@ -91,6 +89,7 @@ public class AdminMenu {
 		} else {
 			System.out.println("该学生不存在");
 		}
+		admingMenu();
 
 	}
 
@@ -100,10 +99,11 @@ public class AdminMenu {
 		if (adminMain.output(stuId)) {
 			adminMain.outputrecord(stuId);
 			System.out.println("迁出成功");
+			admingMenu();
 		} else {
 			System.out.println("迁出失败");
+			admingMenu();
 		}
-
 	}
 
 	public void changeDormitory() {
@@ -117,7 +117,7 @@ public class AdminMenu {
 			changebyOne();
 			break;
 		case 2:
-
+			changeByAll();
 			break;
 		case 3:
 			admingMenu();

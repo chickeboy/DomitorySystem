@@ -19,15 +19,18 @@ public class StudentOperation {
 	TimeUtil timeUtil = new TimeUtil();
 	SchoolCardData schoolCardData = new SchoolCardData();
 	RepairData repairData = new RepairData();
-	public boolean add(Student student) {
-		int id = studentMain.findLastId();
+	public int add(Student student) {
+		int id = -1;
+		id = studentMain.findLastId();
 		student.setId(id+1);
+		student.setSchoolcard(-1);
 		if (studentMain.findByStudent(student)!=null) {
-			return false;
+			id = -1;
 		}else {
 			studentMain.add(student);
-			return true;
+			id = id +1;
 		}
+		return id;
 	}
 	public boolean longin(int id,String name,String password) {
 		Student student = new Student(id, name, password);
@@ -40,17 +43,17 @@ public class StudentOperation {
 	public void showAll() {
 		showUtil.show(studentMain.showAll(), "Ñ§Éú");
 	}
-	public boolean consumption(int stuid,int money){	
+	public int consumption(int stuid,int money){
 		int a = schoolCardData.showMoney(schoolCardData.findByStuid(stuid));
 		if (a-money<0) {
-			return false;
+			return -1;
 		}else {
 			schoolCardData.deductions(schoolCardData.findByStuid(stuid),money);
-			return true;
+			return a-money;
 		}
 	}
 	public void repair(int stuid,int dormitory,String content) {
-		Repair repair = new Repair(repairData.getId(),stuid, dormitory, content,timeUtil.time());
+		Repair repair = new Repair(repairData.getId()+1,stuid, dormitory, content,timeUtil.time());
 		repairData.add(repair);
 	}
 	public void changePassword(int stuid,String password) {
@@ -74,13 +77,18 @@ public class StudentOperation {
 			Entry<String, String> entry = (Entry<String, String>) iterator.next();
 			if (entry.getValue().equals(string)) {
 				return true;
-			}else {
-				return false;
 			}
 		}
 		return false;
 	}
 	public String getPassword(int stuid) {
 		return studentMain.findById(stuid).getPassword();
+	}
+	public boolean findSchoolCard(int stuid) {
+		if (schoolCardData.findByStuid(stuid)!=null) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 }

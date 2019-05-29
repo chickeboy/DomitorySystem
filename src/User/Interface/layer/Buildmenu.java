@@ -88,7 +88,6 @@ public class Buildmenu {
 	}
 
 	public void show() {
-		while (true) {
 			System.out.println("======查询寝室楼信息界面========");
 			System.out.println("1.根据id查询");
 			System.out.println("2.根据类型查询");
@@ -111,7 +110,6 @@ public class Buildmenu {
 			default:
 				break;
 			}
-		}
 	}
 	public void showByid() {
 		System.out.println("请输入id");
@@ -131,6 +129,7 @@ public class Buildmenu {
 		if (!build.showAll()) {
 			System.out.println("没有数据");
 		}
+		buildMenu();
 	}
 	
 }

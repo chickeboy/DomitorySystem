@@ -18,13 +18,13 @@ public class SchoolCardMain {
 	RechargeableData rechargeableData = new RechargeableData();
 	public boolean addSchoolCard(int stuId, String payId) {
 		if (studentMain.findById(stuId) != null) {
-			schoolCardData.addSchoolCard(stuId, payId);
+			int schoolCardid = schoolCardData.addSchoolCard(stuId, payId);
+			studentMain.schoolCard(stuId, schoolCardid);
 			return true;
 		} else {
 			return false;
 		}
 	}
-
 	public boolean rechargeable(int stuid, String payId) {
 		SchoolCard schoolCard = new SchoolCard(stuid, payId);
 		if (schoolCardData.schoolCardData(schoolCard) != null) {
@@ -47,12 +47,19 @@ public class SchoolCardMain {
 				arrayList2.add(arrayList.get(i));
 			}
 		}
-		showUtil.show(arrayList, stuId+"号学生的充值记录");
+		showUtil.show(arrayList2, stuId+"号学生的充值记录");
 	}
 	public void changePayId(int school,int stuid,String newPayId) {
 		schoolCardData.cahngePayId(school, stuid, newPayId);
 	}
 	public void showAll() {
 		showUtil.show(schoolCardData.showALL(), "校园卡");
+	}
+	public boolean findcard(int stuId) {
+		if (schoolCardData.findByid(stuId)!=null) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 }

@@ -1,6 +1,8 @@
 package Dormitory.Class;
 
-public class InPutOutPut {
+import java.io.Serializable;
+
+public class InPutOutPut implements Serializable{
 	private int id;
 	private String stuname;
 	private DormitoryAll dormitoryAll;

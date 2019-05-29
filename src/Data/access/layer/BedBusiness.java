@@ -24,7 +24,7 @@ public class BedBusiness extends IOutil {
 		arrayList = read();
 		DormitoryBed dormitory2 = null;
 		for (int i = 0; i < arrayList.size(); i++) {
-			if (arrayList.contains(dormitory)) {
+			if (arrayList.get(i).equals(dormitory)) {
 				dormitory2 = arrayList.get(i);
 				break;
 			}
@@ -99,4 +99,5 @@ public class BedBusiness extends IOutil {
 		}
 		return null;
 	}
+	
 }

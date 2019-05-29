@@ -49,15 +49,16 @@ public class DormitoryBuilding implements Serializable,Comparable<DormitoryBuild
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	@Override
 	public String toString() {
-		return id+"ºÅÂ¥"+"ÀàÐÍ"+type+"ËÞÉá";
+		return "DormitoryBuilding [type=" + type + ", id=" + id + "]";
 	}
 
 	@Override
 	public int compareTo(DormitoryBuilding o) {
 		// TODO Auto-generated method stub
-		return id=o.getId();
+		return id-o.getId();
 	}
 	
 }

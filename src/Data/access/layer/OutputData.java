@@ -29,4 +29,8 @@ public class OutputData  extends IOutil {
 			return arrayList.get(arrayList.size()-1).getId();
 		}
 	}
+	public ArrayList<InPutOutPut> showAll() {
+		return	arrayList = read();
+	}
+	
 }
